@@ -1,6 +1,8 @@
-package com.example.flashcards.entity;
+package com.example.flashcards.model;
 
 import java.time.LocalDateTime;
+
+import com.example.flashcards.dto.FlashcardRequestDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 
 @Table (name = "flashcards")
 @Entity (name = "flashcards")
@@ -36,4 +39,9 @@ public class Flashcard {
     
     @ManyToOne @JoinColumn(name = "baralho_id", nullable = false)
     private Baralho baralho;
+
+    public Flashcard(FlashcardRequestDTO data){
+        this.pergunta = data.pergunta();
+        this.resposta = data.resposta();
+    }
 }
