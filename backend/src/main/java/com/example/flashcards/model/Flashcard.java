@@ -15,14 +15,15 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-
-@Table (name = "flashcards")
-@Entity (name = "flashcards")
+import lombok.Setter;
+@Setter
 @Getter 
 @NoArgsConstructor 
 @AllArgsConstructor 
 @EqualsAndHashCode (of = "id")
+
+@Entity
+@Table (name = "flashcards")
 public class Flashcard {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

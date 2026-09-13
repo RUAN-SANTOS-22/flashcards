@@ -2,8 +2,8 @@ package com.example.flashcards.dto;
 
 import com.example.flashcards.model.Baralho;
 
-public record BaralhoResponseDTO(Long id, String nome, String descricao) {
+public record BaralhoResponseDTO(Long id, String nome, String descricao, int qtdeFlashcards) {
     public BaralhoResponseDTO(Baralho baralho){
-        this(baralho.getId(), baralho.getNome() , baralho.getDescricao());
+        this(baralho.getId(), baralho.getNome() , baralho.getDescricao(), baralho.getQtdeFlashcards());
     }
 }

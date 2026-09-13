@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import com.example.flashcards.model.Baralho;
 import com.example.flashcards.repository.BaralhoRepository;
 
 @RestController 
-@RequestMapping ("baralho")
+@RequestMapping ("/baralho")
 
 public class BaralhoController {
 
@@ -23,6 +24,7 @@ public class BaralhoController {
 
 
     //salvar baralho
+    @PostMapping 
     public void saveBaralho(@RequestBody BaralhoRequestDTO data){
         Baralho baralhoData = new Baralho(data);
         repository.save(baralhoData);

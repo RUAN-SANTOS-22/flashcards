@@ -1,5 +1,6 @@
 package com.example.flashcards.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.flashcards.dto.BaralhoRequestDTO;
@@ -21,22 +22,24 @@ import lombok.NoArgsConstructor;
 
 @Getter 
 
-@Entity (name = "baralhos")
+@Entity
 @Table(name = "baralhos")
 public class Baralho {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
-
     private String descricao;
 
-    @OneToMany(mappedBy = "baralho")
-    private List<Flashcard> flashcards;
+    @OneToMany(mappedBy = "baralho") 
+    private List<Flashcard> flashcards = new ArrayList<>();
 
     public Baralho(BaralhoRequestDTO data){
         this.nome = data.nome();
         this.descricao = data.descricao();
+    }
+
+    public int getQtdeFlashcards(){
+        return flashcards != null ? flashcards.size() : 0;
     }
 }
